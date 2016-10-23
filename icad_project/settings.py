@@ -32,10 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'fcga.apps.FcgaConfig',
-<<<<<<< HEAD
     'django_extensions',
-=======
->>>>>>> 1f0c6a1edbed81bce494c9f299c4589ef7cde33e
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
