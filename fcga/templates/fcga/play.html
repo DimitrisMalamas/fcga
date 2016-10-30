@@ -1,0 +1,21 @@
+{% extends "fcga/base.html" %}
+
+{% block content %}
+{% if not card %}
+  <h2 class="bg-warning">No cards available.</h2>
+{% else %}
+  <div class="list-group">
+    {% for c in card %}
+      <div class="list-group-item active">
+        Question: {{ c.question }}
+      </div>
+      <div class="list-group-item">
+        Answer: {{ c.answer }}
+      </div>
+      <div class="list-group-item">
+        card date: {{ c.card_date }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+{% endblock %}
