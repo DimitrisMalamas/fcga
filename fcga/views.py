@@ -4,6 +4,8 @@ from django.shortcuts import get_object_or_404
 
 from django.http import HttpResponseRedirect
 
+from .models import Deck, Cards
+
 from django.urls import reverse
 
 from django.utils import timezone
@@ -14,9 +16,37 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.decorators import login_required
 
-def index(request):
-    return render(request, 'fcga/index.html')
 
+def index(request):
+    all_decks = Deck.objects.all()
+    context = {'all_decks': all_decks}
+    return render(request, 'fcga/index.html', context)
+
+def deck(request, deck_id):
+    dec = get_object_or_404(Deck, pk=deck_id)
+    return render(request, 'fcga/deck.html', {'deck': dec})
+
+
+@login_required(login_url='/fcga/login/')
+def cdeck(request, user_id = None):
+    if request.method == 'POST':
+        dec2 = Deck()
+        u = None
+        if request.user.is_authenticated():
+            u = request.user
+        dec2.owner = u
+        dec2.title = request.POST['title']
+        dec2.category = request.POST['category']
+        dec2.description = request.POST['description']
+        dec2.deck_date = timezone.now()
+        dec2.save()
+        return HttpResponseRedirect(reverse('fcga:index'))
+    else:
+        return render(request, 'fcga/cdeck.html')
+
+def play(request, deck_id):
+    card = Cards.objects.filter(deck_id = deck_id)
+    return render(request, 'fcga/play.html', {'card': card})
 def profile(request, user_id=None):
     if request.method == 'POST':
         if request.POST['password'] != request.POST['confirm-password']:
