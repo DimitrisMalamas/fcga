@@ -6,6 +6,8 @@ app_name = 'fcga'
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^pdecks/(?P<user_id>[0-9]+)/$', views.pdecks, name='pdecks'),
+    url(r'^ccards/(?P<deck_id>[0-9]+)/$', views.ccards, name='ccards'),
     url(r'^cdeck/$', views.cdeck, name='cdeck'),
     url(r'^deck/(?P<deck_id>[0-9]+)/$', views.deck, name='deck'),
     url(r'^play/(?P<deck_id>[0-9]+)/$', views.play, name='play'),

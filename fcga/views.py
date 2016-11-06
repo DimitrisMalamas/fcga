@@ -40,9 +40,30 @@ def cdeck(request, user_id = None):
         dec2.description = request.POST['description']
         dec2.deck_date = timezone.now()
         dec2.save()
-        return HttpResponseRedirect(reverse('fcga:index'))
+        d = dec2.id
+        return render(request, 'fcga/ccards.html', {'deck_id': d})
     else:
         return render(request, 'fcga/cdeck.html')
+
+@login_required(login_url='/fcga/login/')
+def pdecks(request, user_id):
+    user = User.objects.get(pk=user_id)
+    decks = Deck.objects.filter(owner = user)
+    return render(request, 'fcga/pdecks.html', {'deck': decks})
+
+@login_required(login_url='/fcga/login/')
+def ccards(request, deck_id):
+    if request.method == 'POST':
+        card = Cards()
+        card.deck = Deck.objects.get(pk=deck_id)
+        card.question = request.POST['question']
+        card.answer = request.POST['answer']
+        card.card_date = timezone.now()
+        card.save()
+        return render(request, 'fcga/ccards.html', {'deck_id': deck_id})
+    else:
+        return render(request, 'fcga/ccards.html')
+
 
 def play(request, deck_id):
     card = Cards.objects.filter(deck_id = deck_id)
