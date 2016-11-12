@@ -28,20 +28,30 @@ def deck(request, deck_id):
 
 
 @login_required(login_url='/fcga/login/')
-def cdeck(request, user_id = None):
+def cdeck(request, deck_id = None):
     if request.method == 'POST':
-        dec2 = Deck()
-        u = None
         if request.user.is_authenticated():
             u = request.user
-        dec2.owner = u
-        dec2.title = request.POST['title']
-        dec2.category = request.POST['category']
-        dec2.description = request.POST['description']
-        dec2.deck_date = timezone.now()
-        dec2.save()
-        d = dec2.id
-        return render(request, 'fcga/ccards.html', {'deck_id': d})
+        if deck_id == None:
+            dec2 = Deck()
+            dec2.owner = u
+            dec2.title = request.POST['title']
+            dec2.category = request.POST['category']
+            dec2.description = request.POST['description']
+            dec2.deck_date = timezone.now()
+            dec2.save()
+            d = dec2.id
+            return render(request, 'fcga/ccards.html', {'deck_id': d})
+        else:
+            dec2 = Deck.objects.get(pk = deck_id)
+            dec2.title = request.POST['title']
+            dec2.category = request.POST['category']
+            dec2.description = request.POST['description']
+            dec2.save()
+            if request.user.is_authenticated():
+                u = request.user
+            decks = Deck.objects.filter(owner = u)
+            return render(request, 'fcga/pdecks.html', {'deck': decks})
     else:
         return render(request, 'fcga/cdeck.html')
 
@@ -52,18 +62,75 @@ def pdecks(request, user_id):
     return render(request, 'fcga/pdecks.html', {'deck': decks})
 
 @login_required(login_url='/fcga/login/')
-def ccards(request, deck_id):
+def ccards(request, deck_id, cards_id = None):
     if request.method == 'POST':
-        card = Cards()
-        card.deck = Deck.objects.get(pk=deck_id)
-        card.question = request.POST['question']
-        card.answer = request.POST['answer']
-        card.card_date = timezone.now()
-        card.save()
-        return render(request, 'fcga/ccards.html', {'deck_id': deck_id})
+        if cards_id == None:
+            card = Cards()
+            card.deck = Deck.objects.get(pk=deck_id)
+            card.question = request.POST['question']
+            card.answer = request.POST['answer']
+            card.card_date = timezone.now()
+            card.save()
+            return render(request, 'fcga/ccards.html', {'deck_id': deck_id})
+        else:
+            card = Cards.objects.get(pk = cards_id)
+            card.question = request.POST['question']
+            card.answer = request.POST['answer']
+            card.save()
+            dec = Deck.objects.get(pk = deck_id)
+            cards = Cards.objects.filter(deck = dec)
+            context = {
+                'id': dec.id,
+                'title':dec.title,
+                'category': dec.category,
+                'description': dec.description,
+                'cards': cards
+            }
+            return render(request, 'fcga/cdeck.html', context)
     else:
-        return render(request, 'fcga/ccards.html')
+        return render(request, 'fcga/ccards.html', {'deck_id': deck_id})
 
+@login_required(login_url='/fcga/login/')
+def change_cards(request, cards_id):
+    card = Cards.objects.get(pk = cards_id)
+    deck = card.deck
+    context = {
+        'deck_id': deck.id,
+        'id': card.id,
+        'question':card.question,
+        'answer': card.answer
+    }
+    return render(request, 'fcga/ccards.html', context)
+
+@login_required(login_url='/fcga/login/')
+def change_deck(request, deck_id):
+    dec = Deck.objects.get(pk = deck_id)
+    cards = Cards.objects.filter(deck = dec)
+    context = {
+        'id': dec.id,
+        'title':dec.title,
+        'category': dec.category,
+        'description': dec.description,
+        'cards': cards
+    }
+    return render(request, 'fcga/cdeck.html', context)
+
+@login_required(login_url='/fcga/login/')
+def del_deck(request, deck_id):
+    deck = Deck.objects.get(pk = deck_id)
+    deck.delete()
+    if request.user.is_authenticated():
+        u = request.user
+    decks = Deck.objects.filter(owner = u)
+    return render(request, 'fcga/pdecks.html', {'deck': decks})
+
+@login_required(login_url='/fcga/login/')
+def del_card(request, cards_id):
+    card = Cards.objects.get(pk = cards_id)
+    card.delete()
+    deck = card.deck
+    deck_id = deck.id
+    return render(request, 'fcga/cdeck.html', {'id': deck_id})
 
 def play(request, deck_id):
     card = Cards.objects.filter(deck_id = deck_id)

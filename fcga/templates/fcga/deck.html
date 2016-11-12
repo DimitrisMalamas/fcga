@@ -11,10 +11,10 @@
     Date published: {{ deck.deck_date }}
   </li>
 </ul>
-<li class="list-group-item">
 
-  <a href= "{% url 'fcga:play' deck.id %}">Play Now :)</a>
+  <p><a class="btn btn-success btn-lg" href="{% url 'fcga:play' deck.id %}" role="button">Play Now</a></p>
 
 
-</li>
+
+
 {% endblock %}

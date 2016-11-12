@@ -1,26 +1,34 @@
-{% extends "fcga/base.html" %}
+{% extends "fcga/base.html" %} {% block content %} {% if id %}
+<form action="{% url 'fcga:cdeck' id %}" method="post">
+    {% else %}
+    <form action="{% url 'fcga:cdeck'%}" method="post">
+        {% endif %} {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" class="form-control" placeholder="Title" value="{{ title }}" />
+        </div>
+        <div class="form-group">
+            <label for="category">Category</label>
+            <input type="text" id="category" name="category" class="form-control" placeholder="Category" value="{{ category }}" />
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description" class="form-control" placeholder="Description" value="{{ description }}" />
+        </div>
 
-{% block content %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <hr> {% if id %}
+    <p><b> Make changes to the cards of the deck and continue adding new cards</b></p>
 
-<form action="{% url 'fcga:cdeck'%}"  method="post">
-  {% csrf_token %}
-    <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" id="title" name="title"
-           class="form-control" placeholder="Title" value="{{ title }}"/>
-  </div>
-  <div class="form-group">
-    <label for="category">Category</label>
-    <input type="text" id="category" name="category"
-           class="form-control" placeholder="Category" value="{{ category }}"/>
-  </div>
-  <div class="form-group">
-    <label for="description">Description</label>
-    <input type="text" id="description" name="description"
-           class="form-control" placeholder="Description" value="{{ description }}"/>
-  </div>
+    {% for c in cards %}
+    <li class="list-group-item">
+        <a href="{% url 'fcga:change_cards' c.id %}">{{ c.question }}</a>
+        <p><a class="btn btn-danger btn-sm" href="{% url 'fcga:del_card' c.id %}" role="button">Delete current Card</a></p>
+    </li>
+    {% endfor %}
+    <hr>
+    <p><b> Add new cards</b></p>
+    <p><a class="btn btn-success btn-sm" href="{% url 'fcga:ccards' id %}" role="button">Add</a></p>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-{% endblock %}
+    {% endif %} {% endblock %}

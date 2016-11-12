@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Deck(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, unique=True)
     category = models.CharField(max_length=200)
     description = models.CharField(max_length=1000)
     deck_date = models.DateTimeField('review date')
