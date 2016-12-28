@@ -1,0 +1,10 @@
+<h3>Decks</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let deck of decks"
+       [routerLink]="['/detail', deck.id]" class="col-1-4">
+    <div class="module deck">
+      <h4>{{deck.title}}</h4>
+    </div>
+  </a>
+</div>
+<deck-search></deck-search>

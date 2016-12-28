@@ -1,0 +1,14 @@
+<h2>Decks</h2>
+<ul class="decks">
+  <li *ngFor="let deck of decks"
+      [class.selected]="deck === selectedDeck"
+      (click)="onSelect(deck)">
+    <span class="badge">{{deck.id}}</span> {{deck.title}}
+  </li>
+</ul>
+<div *ngIf="selectedDeck">
+  <h2>
+    {{selectedDeck.title | uppercase}}
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

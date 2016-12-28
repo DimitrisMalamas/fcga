@@ -1,0 +1,37 @@
+
+<h3>Cards</h3>
+<div class="cards">
+  <div *ngFor="let card of cards; let i = index">
+    <div *ngIf="card === selectedCard">
+  <button (click)="onSelect(cards[i+1])">Next</button>
+  <button (click)="onSelect(cards[i-1])">Previous</button>
+</div>
+</div>
+</div>
+<!-- <ul class="cards">
+  <li *ngFor="let card of cards"
+      [class.selected]="card === selectedCard"
+      (click)="onSelect(card)">
+    <div>
+      <span class="badge">{{card.id}}</span>
+    </div>
+  </li>
+</ul> -->
+  <div *ngIf="selectedCard">
+    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+	<div class="flipper">
+		<div class="front">
+			{{selectedCard.question}}
+		</div>
+		<div class="back">
+		  {{selectedCard.answer}}
+		</div>
+	</div>
+</div>
+    <!-- <h2>
+      {{selectedCard.question}}
+    </h2>
+    <h2>
+      {{selectedCard.answer}}
+    </h2> -->
+  </div>

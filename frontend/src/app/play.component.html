@@ -1,0 +1,5 @@
+<div *ngIf="deck">
+  <h2>Play with {{deck.title}} deck</h2>
+  <app-cards [deckId]="deck.id"></app-cards>
+  <button (click)="goBack()">Back</button>
+</div>
