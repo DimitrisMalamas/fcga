@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DashboardComponent } from './dashboard.component';
-import { DecksComponent } from './decks.component';
-import { DeckDetailComponent } from './deck-detail.component';
-import { PlayComponent } from './play.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DecksComponent } from './decks/decks.component';
+import { DeckDetailComponent } from './deck-detail/deck-detail.component';
+import { PlayComponent } from './play/play.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },

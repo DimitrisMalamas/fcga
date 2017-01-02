@@ -1,0 +1,156 @@
+.selected {
+    background-color: #CFD8DC !important;
+    color: white;
+}
+
+.cards {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 4em;
+  }
+
+.cards li {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em 0;
+    /* height: 1.6em; */
+    border-radius: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cards li.selected:hover {
+    background-color: #BBD8DC !important;
+    color: white;
+}
+
+.cards li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+}
+
+.cards .title {
+    position: relative;
+    top: -3px;
+    width: 15em;
+    background-color: #EEE;
+}
+
+.cards .text {
+    position: relative;
+    top: -3px;
+    margin: 6px;
+    padding: 6px;
+    border-radius: 4px;
+    background-color: #FFF;
+}
+
+.cards .datetime {
+    position: relative;
+    text-align: right;
+    font-size: 12px;
+}
+
+.cards .badge {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 0.8em 0.7em 0 0.7em;
+    background-color: #607D8B;
+    line-height: 1em;
+    position: relative;
+    left: -1px;
+    top: -4px;
+    height: 1.8em;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+}
+
+.new-card .textarea-container * {
+    vertical-align: top;
+}
+
+label {
+  display: inline-block;
+  width: 3em;
+  margin: .5em 0;
+  color: #607D8B;
+  font-weight: bold;
+}
+
+input {
+  height: 2em;
+  font-size: 1em;
+  padding-left: .4em;
+}
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000px;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 480px;
+	height: 320px;
+  color: #333333;
+  font-size: 71px;
+  background: #c1c1c1;
+  text-align: center;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+
+button {
+  font-family: Arial;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+}
+button:hover {
+  background-color: #cfd8dc;
+}
+button:disabled {
+  background-color: #eee;
+  color: #aaa;
+  cursor: auto;
+}
