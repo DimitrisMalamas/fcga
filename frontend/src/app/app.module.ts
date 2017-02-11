@@ -16,13 +16,21 @@ import { PlayComponent } from './play/play.component';
 import { DeckSearchComponent } from './deck-search/deck-search.component';
 
 import  { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './login/login.component';
 
+import { AuthService } from './auth.service';
+import { CreateDeckComponent } from './create-deck/create-deck.component';
+import { CreateCardComponent } from './create-card/create-card.component';
+import { TabsModule } from 'ng2-bootstrap';
+import { AlertModule } from 'ng2-bootstrap';
 @NgModule({
   imports:      [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TabsModule.forRoot(),
+    AlertModule.forRoot()
   ],
   declarations: [
     AppComponent,
@@ -31,9 +39,12 @@ import  { AppRoutingModule } from './app-routing.module';
     DashboardComponent,
     DeckSearchComponent,
     CardsComponent,
-    PlayComponent
+    PlayComponent,
+    LoginComponent,
+    CreateDeckComponent,
+    CreateCardComponent
   ],
-  providers: [ DeckService, CardService ],
+  providers: [ DeckService, CardService, AuthService ],
   bootstrap:    [ AppComponent]
 })
 export class AppModule { }

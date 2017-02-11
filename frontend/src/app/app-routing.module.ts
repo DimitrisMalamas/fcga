@@ -5,6 +5,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DecksComponent } from './decks/decks.component';
 import { DeckDetailComponent } from './deck-detail/deck-detail.component';
 import { PlayComponent } from './play/play.component';
+import { LoginComponent } from './login/login.component';
+import { CreateDeckComponent } from './create-deck/create-deck.component';
+import { CreateCardComponent } from './create-card/create-card.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -12,6 +15,9 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent},
   { path: 'detail/:id', component: DeckDetailComponent },
   { path: 'play/:id', component: PlayComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'createDeck', component: CreateDeckComponent },
+  { path: 'createCard', component: CreateCardComponent }
 ];
 
 @NgModule({

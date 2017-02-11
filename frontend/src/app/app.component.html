@@ -1,6 +1,23 @@
-<h1>{{title}}</h1>
+<!-- <h1>{{title}}</h1>
 <nav>
   <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
   <a routerLink="/decks" routerLinkActive="active">Decks</a>
+  <a routerLink="/login" routerLinkActive="active">
+    {{ authService.isLoggedIn ? 'Logout' : 'Login' }} </a>
+  <a routerLink="/createDeck" routerLinkActive="active">Create Deck</a>
 </nav>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet>-->
+
+<alert type="success">{{title}}</alert>
+<div class="container">
+  
+  <tabset>
+    <tab *ngFor="let tab of tabs"
+         [heading]="tab.title"
+         [active]="tab.active"
+         (select)="navigate(tab.path); tab.active=true"
+         (deselect)="tab.active=false">
+    </tab>
+  </tabset>
+  <router-outlet></router-outlet>
+</div>

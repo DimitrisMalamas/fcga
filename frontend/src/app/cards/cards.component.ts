@@ -15,7 +15,8 @@ export class CardsComponent implements OnInit {
 
   cards: Card[];
   selectedCard: Card;
-
+  //put it now
+  stared : Card[] = [];
   constructor(private cardService: CardService) { }
 
   getCards(): void {
@@ -38,5 +39,9 @@ export class CardsComponent implements OnInit {
 
   onSelect(card: Card): void {
     this.selectedCard = card;
+  }
+  //put it now
+  onStar(card: Card): void{
+    this.stared.push(card);
   }
 }

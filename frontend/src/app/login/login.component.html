@@ -1,0 +1,16 @@
+<h2>LOGIN</h2>
+<p>{{message}}</p>
+<p>
+  <span [ngSwitch]="authService.isLoggedIn">
+    <span *ngSwitchCase="false">
+      <label>Username: </label>
+      <input #username/>
+      <label>Password: </label>
+      <input type="password" #password />
+      <button (click)="login(username.value, password.value)">Login</button>
+    </span>
+    <span *ngSwitchCase="true">
+      <button (click)="logout()">Logout</button>
+    </span>
+  </span>
+</p>

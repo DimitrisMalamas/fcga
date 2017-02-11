@@ -5,5 +5,5 @@
   <div><label>description: </label>{{deck.description}}</div>
   <button (click)="goBack()">Back</button>
   <button (click)="goPlay()">Play</button>
-
+  <create-card [deckId]="deck.id"></create-card>
 </div>

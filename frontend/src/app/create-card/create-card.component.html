@@ -1,0 +1,13 @@
+<div class="new-card" *ngIf="authService.isLoggedIn">
+  <div>
+    <label>Question:</label> <input #cardQuestion />
+  </div>
+  <div>
+    <label>Answer:</label>
+    <textarea rows="4" cols="50" #cardAnswer></textarea>
+  </div>
+  <button (click)="add(cardQuestion.value, cardAnswer.value);
+                   cardQuestion.value=''; cardAnswer.value='';">
+    Add
+  </button>
+</div>

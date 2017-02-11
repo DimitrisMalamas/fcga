@@ -1,0 +1,17 @@
+<div class="new-deck" *ngIf="authService.isLoggedIn">
+  <div>
+    <label>Title:</label> <input #deckTitle />
+  </div>
+  <div>
+    <label>Category:</label>
+    <textarea rows="4" cols="50" #deckCategory></textarea>
+  </div>
+  <div>
+    <label>description:</label>
+    <textarea rows="4" cols="50" #deckDescription></textarea>
+  </div>
+  <button (click)="add(deckTitle.value, deckCategory.value, deckDescription.value);
+                   deckTitle.value=''; deckCategory.value=''; deckDescription.value=''">
+    Add
+  </button>
+</div>

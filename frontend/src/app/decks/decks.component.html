@@ -1,8 +1,27 @@
 <h2>Decks</h2>
+<div class="new-review" *ngIf="authService.isLoggedIn">
+  <div>
+    <label>Title:</label> <input #deckTitle />
+  </div>
+  <div>
+    <label>Category:</label>
+    <textarea rows="4" cols="50" #deckCategory></textarea>
+  </div>
+  <div>
+    <label>description:</label>
+    <textarea rows="4" cols="50" #deckDescription></textarea>
+  </div>
+  <button (click)="add(deckTitle.value, deckCategory.value, deckDescription.value);
+                   deckTitle.value=''; deckCategory.value=''; deckDescription.value=''">
+    Add
+  </button>
+</div>
 <ul class="decks">
   <li *ngFor="let deck of decks"
       [class.selected]="deck === selectedDeck"
       (click)="onSelect(deck)">
+    <button class="delete"
+      (click)="delete(deck); $event.stopPropagation()">x</button>
     <span class="badge">{{deck.id}}</span> {{deck.title}}
   </li>
 </ul>
