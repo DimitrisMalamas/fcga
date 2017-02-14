@@ -11,7 +11,7 @@ export class DeckSearchService {
 
   search(term: string): Observable<Deck[]> {
     return this.http
-      .get(`fcga/decks/?title=${term}`)
+      .get(`flipcards/decks/?title=${term}`)
       .map((r: Response) => r.json() as Deck[]);
   }
 }

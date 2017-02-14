@@ -23,6 +23,8 @@ import { CreateDeckComponent } from './create-deck/create-deck.component';
 import { CreateCardComponent } from './create-card/create-card.component';
 import { TabsModule } from 'ng2-bootstrap';
 import { AlertModule } from 'ng2-bootstrap';
+import { TypeaheadModule } from 'ng2-bootstrap';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   imports:      [
     BrowserModule,
@@ -30,7 +32,8 @@ import { AlertModule } from 'ng2-bootstrap';
     HttpModule,
     AppRoutingModule,
     TabsModule.forRoot(),
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    TypeaheadModule.forRoot()
   ],
   declarations: [
     AppComponent,
@@ -42,7 +45,8 @@ import { AlertModule } from 'ng2-bootstrap';
     PlayComponent,
     LoginComponent,
     CreateDeckComponent,
-    CreateCardComponent
+    CreateCardComponent,
+    RegisterComponent
   ],
   providers: [ DeckService, CardService, AuthService ],
   bootstrap:    [ AppComponent]

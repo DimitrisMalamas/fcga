@@ -1,4 +1,4 @@
-<div id="search-component">
+<!-- <div id="search-component">
   <h4>Deck Search</h4>
   <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
   <div>
@@ -6,5 +6,16 @@
          (click)="gotoDetail(deck)" class="search-result" >
       {{deck.title}}
     </div>
+  </div>
+</div> -->
+<div class="search-component row">
+  <div class="col-md-4">
+    <input [(ngModel)]="searchTerm"
+           [typeahead]="matchingDecks"
+           (typeaheadOnSelect)="typeaheadOnSelect($event)"
+           [typeaheadOptionField]="'title'"
+           [typeaheadOptionsLimit]="7"
+           placeholder="Deck search"
+           class="form-control"/>
   </div>
 </div>

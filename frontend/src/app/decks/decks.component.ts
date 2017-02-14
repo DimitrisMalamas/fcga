@@ -20,7 +20,7 @@ export class DecksComponent implements OnInit{
               private authService: AuthService) { }
 
   getDecks(): void {
-    this.deckService.getDecks().then(decks => this.decks = decks);
+    this.deckService.getUserDecks().then(decks => this.decks = decks);
   }
 
   ngOnInit(): void {

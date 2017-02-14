@@ -26,7 +26,7 @@ export class LoginComponent {
         this.setMessage();
         if (this.authService.isLoggedIn) {
           this.appComponent.tabs[0].active = true;
-          let loginIndex = this.appComponent.tabs.length - 1;
+          let loginIndex = this.appComponent.tabs.length - 2;
           this.appComponent.tabs[loginIndex].title = 'Logout';
           this.router.navigate(['/']);
         }
@@ -36,7 +36,7 @@ export class LoginComponent {
 
   logout() {
     this.authService.logout();
-    let loginIndex = this.appComponent.tabs.length - 1;
+    let loginIndex = this.appComponent.tabs.length - 2;
     this.appComponent.tabs[loginIndex].title = 'Login';
     this.setMessage();
   }

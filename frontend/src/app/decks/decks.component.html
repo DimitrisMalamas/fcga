@@ -1,3 +1,4 @@
+<div *ngIf="authService.isLoggedIn">
 <h2>Decks</h2>
 <div class="new-review" *ngIf="authService.isLoggedIn">
   <div>
@@ -30,4 +31,6 @@
     {{selectedDeck.title | uppercase}}
   </h2>
   <button (click)="gotoDetail()">View Details</button>
+  <create-card [deckId]="selectedDeck.id"></create-card>
+</div>
 </div>

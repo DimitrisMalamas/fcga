@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.deckService.getDecks()
-      .then(decks => this.decks = decks.slice(0, 4));
+      .then(decks => this.decks = decks);
   }
 
   gotoDetail(deck: Deck): void { /* TODO */ }

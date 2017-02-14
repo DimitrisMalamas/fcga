@@ -17,13 +17,23 @@ export class DeckService {
 
   getDecks(): Promise<Deck[]> {
     return this.http.get(this.decksUrl)
+     .toPromise()
+     .then(response => {
+       console.log(response.json()); return response.json() as Deck[];
+     })
+    .catch(this.handleError);
+  }
+
+  getUserDecks(): Promise<Deck[]> {
+    let postHeaders = new Headers(this.headers);
+    postHeaders.append('Authorization', `JWT ${this.authService.token}`);
+    return this.http.get(this.decksUrl2, {headers: postHeaders})
       .toPromise()
       .then(response => {
         console.log(response.json()); return response.json() as Deck[];
       })
       .catch(this.handleError);
   }
-
 
   getDeck(id: number): Promise<Deck> {
     return this.getDecks()

@@ -1,17 +1,24 @@
-<div class="new-deck" *ngIf="authService.isLoggedIn">
+<div class="new-review" *ngIf="authService.isLoggedIn">
   <div>
     <label>Title:</label> <input #deckTitle />
   </div>
   <div>
     <label>Category:</label>
-    <textarea rows="4" cols="50" #deckCategory></textarea>
+    <!-- <textarea rows="4" cols="50" #deckCategory></textarea> -->
+    <ul class="decks">
+      <li *ngFor="let c of categories"
+      [class.selected]="c === selectedCategory"
+          (click)="onSelect(c)">
+        <span class="badge">{{c}}</span> {{c}}
+      </li>
+    </ul>
   </div>
   <div>
     <label>description:</label>
     <textarea rows="4" cols="50" #deckDescription></textarea>
   </div>
-  <button (click)="add(deckTitle.value, deckCategory.value, deckDescription.value);
-                   deckTitle.value=''; deckCategory.value=''; deckDescription.value=''">
+  <button (click)="add(deckTitle.value, deckDescription.value);
+                   deckTitle.value=''; deckDescription.value=''">
     Add
   </button>
 </div>

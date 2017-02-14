@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'FCGA';
   tabs: Array<any> = [
     {title: 'Dashboard', path: '/dashboard'},
-    {title: 'Decks', path: '/decks'},
+    {title: 'My Decks', path: '/decks'},
     {title: 'Login', path: '/login'},
     {title: 'Create Deck', path: '/createDeck'}
   ];
