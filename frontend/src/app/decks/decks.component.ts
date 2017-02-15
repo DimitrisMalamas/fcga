@@ -35,6 +35,10 @@ export class DecksComponent implements OnInit{
     this.router.navigate(['/detail', this.selectedDeck.id]);
   }
 
+  gotoCards(): void {
+    this.router.navigate(['/cardsDetails', this.selectedDeck.id]);
+  }
+
   add(title: string, category: string, description: string): void {
     title = title.trim();
     category = category.trim();

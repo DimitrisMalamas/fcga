@@ -1,0 +1,12 @@
+<div *ngIf="authService.isLoggedIn">
+<ul class="decks">
+  <li *ngFor="let card of cards"
+      [class.selected]="card === selectedCard"
+      (click)="onSelect(card)">
+    <button class="delete"
+      (click)="delete(card); $event.stopPropagation()">x</button>
+     {{card.question}}
+  </li>
+</ul>
+<button (click)="goBack()">Back</button>
+</div>

@@ -41,4 +41,13 @@ export class CardService {
       .then(res => res.json())
       .catch(this.handleError);
   }
+  delete(deckid: number, id: number): Promise<void> {
+    const cardsUrl = `flipcards/decks/${deckid}/cards/${id}/`;
+    let postHeaders = new Headers(this.headers);
+    postHeaders.append('Authorization', `JWT ${this.authService.token}`);
+    return this.http.delete(cardsUrl, {headers: postHeaders})
+      .toPromise()
+      .then(() => null)
+      .catch(this.handleError);
+  }
 }

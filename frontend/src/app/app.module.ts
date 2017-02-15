@@ -25,6 +25,7 @@ import { TabsModule } from 'ng2-bootstrap';
 import { AlertModule } from 'ng2-bootstrap';
 import { TypeaheadModule } from 'ng2-bootstrap';
 import { RegisterComponent } from './register/register.component';
+import { CardsDetailDeleteComponent } from './cards-detail-delete/cards-detail-delete.component';
 @NgModule({
   imports:      [
     BrowserModule,
@@ -46,7 +47,8 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     CreateDeckComponent,
     CreateCardComponent,
-    RegisterComponent
+    RegisterComponent,
+    CardsDetailDeleteComponent
   ],
   providers: [ DeckService, CardService, AuthService ],
   bootstrap:    [ AppComponent]
