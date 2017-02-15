@@ -36,7 +36,10 @@ export class CreateDeckComponent implements OnInit {
 
     description = description.trim();
     if (!title) { return; }
-    this.deckService.create(title, this.category, description);
-    this.router.navigate(['/decks'])
+        this.deckService.create(title, this.category, description)
+      .then(deck => {
+
+        this.router.navigate(['/decks']);
+      });
   }
 }
