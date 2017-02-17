@@ -34,10 +34,20 @@ def index(request, path=''):
         return views.serve(request, path)
     else:
         return views.serve(request, 'index.html')
-        
+
 class DeckList(generics.ListAPIView):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
+
+    def get_queryset(self):
+        queryset = Deck.objects.all()
+        title = self.request.query_params.get('title', None)
+        category = self.request.query_params.get('category', None)
+        if title is not None:
+            queryset = queryset.filter(title__contains=title)
+        if category is not None:
+            queryset = queryset.filter(category__contains=category)
+        return queryset
 
 class DeckDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Deck.objects.all()
@@ -105,7 +115,7 @@ class CardsDetail(generics.RetrieveUpdateDestroyAPIView):
         if request.user.id == instance.owner.id:
             self.perform_destroy(instance)
 
-class UserList(generics.ListAPIView):
+class UserList(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 

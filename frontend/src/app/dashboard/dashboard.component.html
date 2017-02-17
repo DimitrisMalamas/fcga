@@ -1,4 +1,18 @@
 <h3>Decks</h3>
+<div>
+  <label>Category:</label>
+  <!-- <textarea rows="4" cols="50" #deckCategory></textarea> -->
+  <ul class="decks">
+    <li (click)="ngOnInit()">
+      All Decks
+    </li>
+    <li *ngFor="let c of categories"
+    [class.selected]="c === selectedCategory"
+        (click)="onSelect(c)">
+       {{c}}
+    </li>
+  </ul>
+</div>
 <div class="grid grid-pad">
   <a *ngFor="let deck of decks"
        [routerLink]="['/detail', deck.id]" class="col-1-4">
