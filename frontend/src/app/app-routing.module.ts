@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateDeckComponent } from './create-deck/create-deck.component';
 import { CreateCardComponent } from './create-card/create-card.component';
 import { CardsDetailDeleteComponent } from './cards-detail-delete/cards-detail-delete.component';
+import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'decks', component: DecksComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'detail/:id', component: DeckDetailComponent },
   { path: 'play/:id', component: PlayComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'signUp', component: RegisterComponent },
   { path: 'createDeck', component: CreateDeckComponent },
   { path: 'createCard', component: CreateCardComponent },
   { path: 'cardsDetails/:id', component: CardsDetailDeleteComponent }

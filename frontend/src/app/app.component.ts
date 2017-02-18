@@ -13,6 +13,7 @@ export class AppComponent {
     {title: 'Dashboard', path: '/dashboard'},
     {title: 'My Decks', path: '/decks'},
     {title: 'Login', path: '/login'},
+    {title: 'Sign Up', path: '/signUp'},
     {title: 'Create Deck', path: '/createDeck'}
   ];
   navigate(path: string) {

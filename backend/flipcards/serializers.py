@@ -24,6 +24,22 @@ class UserSerializer(serializers.ModelSerializer):
     udeck = serializers.PrimaryKeyRelatedField(many=True, queryset=Deck.objects.all())
     ucards = serializers.PrimaryKeyRelatedField(many=True, queryset=Cards.objects.all())
 
-    class Model:
+    class Meta:
         model = User
-        fields = ('id', 'username', 'udeck', 'ucards')
+        fields = ('id', 'username', 'email', 'password' ,'udeck', 'ucards')
+        extra_kwargs = {'password': {'write_only': True}}
+
+class CreateUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('email', 'username', 'password')
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        user = User(
+            email=validated_data['email'],
+            username=validated_data['username']
+        )
+        user.set_password(validated_data['password'])
+        user.save()
+        return user

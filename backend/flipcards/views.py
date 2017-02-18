@@ -16,7 +16,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.decorators import login_required
 
-from .serializers import DeckSerializer, CardsSerializer, UserSerializer
+from .serializers import DeckSerializer, CardsSerializer, UserSerializer, CreateUserSerializer
 
 from rest_framework import generics
 
@@ -116,9 +116,11 @@ class CardsDetail(generics.RetrieveUpdateDestroyAPIView):
             self.perform_destroy(instance)
 
 class UserList(generics.ListCreateAPIView):
+
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = CreateUserSerializer
+
 
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = CreateUserSerializer

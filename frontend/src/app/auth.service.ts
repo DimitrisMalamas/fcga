@@ -35,6 +35,8 @@ export class AuthService {
         .catch(this.handleError);
   }
 
+
+
   logout(): void {
     this.isLoggedIn = false;
     this.token = null;
@@ -44,5 +46,16 @@ export class AuthService {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
-
+  signup(username, email, password): Promise<any> {
+    const authUrl = 'flipcards/users/';
+    return this.http
+      .post(authUrl,
+            JSON.stringify({ username: username,
+                             email: email,
+                             password: password }),
+        { headers: this.headers })
+        .toPromise()
+        .then(res => res.json())
+        .catch(this.handleError);
+  }
 }
