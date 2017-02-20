@@ -13,6 +13,7 @@
     </li>
   </ul>
 </div>
+<deck-search></deck-search>
 <div class="grid grid-pad">
   <a *ngFor="let deck of decks"
        [routerLink]="['/detail', deck.id]" class="col-1-4">
@@ -21,4 +22,3 @@
     </div>
   </a>
 </div>
-<deck-search></deck-search>

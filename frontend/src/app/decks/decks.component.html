@@ -1,22 +1,3 @@
-<div *ngIf="authService.isLoggedIn">
-<h2>Decks</h2>
-<div class="new-review" *ngIf="authService.isLoggedIn">
-  <div>
-    <label>Title:</label> <input #deckTitle />
-  </div>
-  <div>
-    <label>Category:</label>
-    <textarea rows="4" cols="50" #deckCategory></textarea>
-  </div>
-  <div>
-    <label>description:</label>
-    <textarea rows="4" cols="50" #deckDescription></textarea>
-  </div>
-  <button (click)="add(deckTitle.value, deckCategory.value, deckDescription.value);
-                   deckTitle.value=''; deckCategory.value=''; deckDescription.value=''">
-    Add
-  </button>
-</div>
 <ul class="decks">
   <li *ngFor="let deck of decks"
       [class.selected]="deck === selectedDeck"
@@ -26,12 +7,11 @@
      {{deck.title}}
   </li>
 </ul>
-<div *ngIf="selectedDeck">
+<div class="right" *ngIf="selectedDeck">
   <h2>
     {{selectedDeck.title | uppercase}}
   </h2>
   <button (click)="gotoDetail()">View Details</button>
   <button (click)="gotoCards()">View and Delete Cards</button>
-  <create-card [deckId]="selectedDeck.id"></create-card>
-</div>
+  <create-card layout="row" layout-align="center center" [deckId]="selectedDeck.id"></create-card>
 </div>

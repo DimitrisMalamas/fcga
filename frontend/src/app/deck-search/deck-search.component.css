@@ -1,3 +1,7 @@
 .search-component {
     margin-top: 1em;
 }
+
+.form-control {
+    width: 73%;
+}

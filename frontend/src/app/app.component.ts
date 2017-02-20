@@ -9,6 +9,7 @@ import { AuthService } from './auth.service';
 })
 export class AppComponent {
   title = 'FCGA';
+  fullImagePath: string;
   tabs: Array<any> = [
     {title: 'Dashboard', path: '/dashboard'},
     {title: 'My Decks', path: '/decks'},
@@ -21,6 +22,7 @@ export class AppComponent {
   }
   constructor(private router: Router) {
     this.tabs[0].active = true;
+    this.fullImagePath = './src/assets/copy.png';
   }
   // constructor(private authService: AuthService) { }
 }

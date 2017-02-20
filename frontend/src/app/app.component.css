@@ -26,3 +26,8 @@ nav a:hover {
 nav a.active {
   color: #039be5;
 }
+.alert-success {
+
+    background-color: #67BCDB;
+
+}

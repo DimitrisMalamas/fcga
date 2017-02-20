@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   category : string;
 
   ngOnInit(): void {
+    this.selectedCategory = 'All decks';
     this.deckService.getDecks()
       .then(decks => this.decks = decks);
   }

@@ -14,10 +14,8 @@
     cursor: pointer;
     position: relative;
     left: 0;
-    background-color: #EEE;
+    background-color: #E44424;
     margin: .5em;
-    padding: .3em 0;
-    height: 1.6em;
     border-radius: 4px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -70,4 +68,13 @@ button:disabled {
   background-color: #eee;
   color: #aaa;
   cursor: auto;
+}
+.container {
+
+    text-align:right;
+}
+.right{
+    position: absolute;
+    left: 700px;
+    top: 90px;
 }

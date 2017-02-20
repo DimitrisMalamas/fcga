@@ -1,4 +1,4 @@
-<div class="new-card" *ngIf="authService.isLoggedIn">
+<!-- <div class="new-card" *ngIf="authService.isLoggedIn">
   <div>
     <label>Question:</label> <input #cardQuestion />
   </div>
@@ -10,4 +10,21 @@
                    cardQuestion.value=''; cardAnswer.value='';">
     Add
   </button>
+</div> -->
+
+<div class="new-card" *ngIf="authService.isLoggedIn">
+<div class="container">
+  <h3>Add a Question</h3>
+    <form>
+      <div class="form-group">
+        <label>Question: </label>
+        <input class="form-control" #cardQuestion/>
+      </div>
+      <div class="form-group">
+        <label>Answer: </label>
+        <input rows="4" cols="50" class="form-control" #cardAnswer />
+      </div>
+      <button type="submit" class="btn btn-success" (click)="add(cardQuestion.value, cardAnswer.value);
+                       cardQuestion.value=''; cardAnswer.value='';">Add Card</button>
+    </form>
 </div>
