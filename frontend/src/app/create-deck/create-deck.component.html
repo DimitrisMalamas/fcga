@@ -1,10 +1,10 @@
-<div class="new-review" *ngIf="authService.isLoggedIn">
+<!-- <div class="new-review" *ngIf="authService.isLoggedIn">
   <div>
     <label>Title:</label> <input #deckTitle />
   </div>
   <div>
     <label>Category:</label>
-    <!-- <textarea rows="4" cols="50" #deckCategory></textarea> -->
+    <textarea rows="4" cols="50" #deckCategory></textarea>
     <ul class="decks">
       <li *ngFor="let c of categories"
       [class.selected]="c === selectedCategory"
@@ -21,4 +21,32 @@
                    deckTitle.value=''; deckDescription.value=''">
     Add
   </button>
+</div> -->
+
+
+<div class="new-deck" *ngIf="authService.isLoggedIn">
+<div class="container">
+<h3>Create a deck</h3>
+    <form>
+      <div class="form-group">
+        <label>Title: </label>
+        <input class="form-control" #deckTitle/>
+      </div>
+      <div class="form-group">
+        <label>Category: </label>
+      </div>
+      <ul class="decks">
+        <li *ngFor="let c of categories"
+        [class.selected]="c === selectedCategory"
+            (click)="onSelect(c)">
+          {{c}}
+        </li>
+      </ul>
+      <div class="form-group">
+        <label>description: </label>
+        <input rows="4" cols="50" class="form-control" #deckDescription />
+      </div>
+      <button type="submit" class="btn btn-success" (click)="add(deckTitle.value, deckDescription.value);
+                       deckTitle.value=''; deckDescription.value=''">Add</button>
+    </form>
 </div>

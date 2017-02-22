@@ -69,7 +69,7 @@ h4 {
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
-    width: 15em;
+    width: 35em;
   }
 
 .decks li {
@@ -132,4 +132,10 @@ button:disabled {
   background-color: #eee;
   color: #aaa;
   cursor: auto;
+}
+
+ul {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
 }

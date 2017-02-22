@@ -21,7 +21,7 @@ export class CreateDeckComponent implements OnInit {
               private deckService: DeckService,
               private authService: AuthService) { }
 
-  categories = ['Other', 'Biology'];
+  categories = ['Other', 'Biology', 'Science', 'Geography', 'History', 'Literature', 'Chemistry', 'Fun'];
   selectedCategory : string;
   ngOnInit() {
     this.category = this.categories[0];

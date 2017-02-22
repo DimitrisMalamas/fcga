@@ -22,7 +22,7 @@ export class AppComponent {
   }
   constructor(private router: Router) {
     this.tabs[0].active = true;
-    this.fullImagePath = './src/assets/copy.png';
+    this.fullImagePath = '/assets/copy.png';
   }
   // constructor(private authService: AuthService) { }
 }

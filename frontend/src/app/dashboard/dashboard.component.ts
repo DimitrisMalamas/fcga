@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   constructor(private deckService: DeckService,
               private deckSearchService: DeckSearchService) { }
 
-  categories = ['Other', 'Biology'];
+  categories = ['Other', 'Biology', 'Science', 'Geography', 'History', 'Literature', 'Chemistry', 'Fun'];
   selectedCategory: string;
   category : string;
 

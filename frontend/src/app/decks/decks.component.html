@@ -1,8 +1,9 @@
+<div *ngIf="authService.isLoggedIn">
 <ul class="decks">
   <li *ngFor="let deck of decks"
       [class.selected]="deck === selectedDeck"
       (click)="onSelect(deck)">
-    <button class="delete"
+    <button class="delete" title="Delete"
       (click)="delete(deck); $event.stopPropagation()">x</button>
      {{deck.title}}
   </li>
