@@ -1,7 +1,11 @@
 <div *ngIf="deck">
-  <h2>{{deck.title}} details:</h2>
-  <div><label>category: {{deck.category}}</label></div>
-  <div><label>description: {{deck.description}}</label></div>
+  
+  <div><label>category: </label>
+  <h3>{{deck.category}}</h3>
+  </div>
+  <div><label>description: </label>
+  <h3>{{deck.description}}</h3>
+  </div>
   <button (click)="goBack()">Back</button>
   <button (click)="goPlay()">Play</button>
 

@@ -44,4 +44,8 @@ export class CardsComponent implements OnInit {
   onStar(card: Card): void{
     this.stared.push(card);
   }
+
+  onRemove(card: Card): void{
+    this.stared.splice(this.stared.indexOf(card), 1);
+  }
 }

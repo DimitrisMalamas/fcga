@@ -35,12 +35,14 @@
     <h2>
       {{selectedCard.answer}}
     </h2> -->
-
-    <ul class="cards">
+    <h3> Starred Cards </h3>
+    <ul class="starredCards">
       <li *ngFor="let card of stared"
           [class.selected]="card === selectedCard"
           (click)="onSelect(card)">
-        <span class="badge">{{card.id}}</span> {{card.title}}
+          <button class="delete" title="Delete"
+            (click)="onRemove(card); $event.stopPropagation()">x</button>
+       {{card.question}}
       </li>
     </ul>
     <div *ngIf="selectedCard">

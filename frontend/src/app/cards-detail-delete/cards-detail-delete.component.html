@@ -1,3 +1,6 @@
+<div *ngIf="authService.isLoggedIn == false">
+  <app-login></app-login>
+</div>
 <div *ngIf="authService.isLoggedIn">
 <ul class="decks">
   <li *ngFor="let card of cards"

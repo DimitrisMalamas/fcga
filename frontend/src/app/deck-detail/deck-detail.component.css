@@ -27,3 +27,6 @@ button:disabled {
   color: #aaa;
   cursor: auto;
 }
+h3 {
+  color: crimson;
+}

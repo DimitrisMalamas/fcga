@@ -20,6 +20,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: auto;
+    padding: 10px;
+    -webkit-transform:rotate(-5deg); -webkit-box-shadow:10px 10px 20px #000000;
+  transform:rotate(-5deg); box-shadow:10px 10px 20px #000000;
+}
+h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
 }
 
 .decks li.selected:hover {

@@ -11,7 +11,9 @@
     Add
   </button>
 </div> -->
-
+<div *ngIf="authService.isLoggedIn == false">
+  <app-login></app-login>
+</div>
 <div class="new-card" *ngIf="authService.isLoggedIn">
 <div class="container">
   <h3>Add a Question</h3>

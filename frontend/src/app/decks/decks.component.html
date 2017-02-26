@@ -1,13 +1,19 @@
+<div *ngIf="authService.isLoggedIn == false">
+  <app-login></app-login>
+</div>
+
 <div *ngIf="authService.isLoggedIn">
+
 <ul class="decks">
   <li *ngFor="let deck of decks"
       [class.selected]="deck === selectedDeck"
       (click)="onSelect(deck)">
     <button class="delete" title="Delete"
       (click)="delete(deck); $event.stopPropagation()">x</button>
-     {{deck.title}}
+     <h3>{{deck.title}}</h3>
   </li>
 </ul>
+
 <div class="right" *ngIf="selectedDeck">
   <h2>
     {{selectedDeck.title | uppercase}}
@@ -15,4 +21,5 @@
   <button (click)="gotoDetail()">View Details</button>
   <button (click)="gotoCards()">View and Delete Cards</button>
   <create-card layout="row" layout-align="center center" [deckId]="selectedDeck.id"></create-card>
+</div>
 </div>

@@ -17,12 +17,15 @@ export class AppComponent {
     {title: 'Sign Up', path: '/signUp'},
     {title: 'Create Deck', path: '/createDeck'}
   ];
+
+
   navigate(path: string) {
     this.router.navigate([path]);
   }
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private authService: AuthService) {
     this.tabs[0].active = true;
-    this.fullImagePath = '/assets/copy.png';
+    this.fullImagePath = 'assets/img/copy.png';
   }
   // constructor(private authService: AuthService) { }
 }

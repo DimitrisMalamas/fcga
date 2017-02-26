@@ -65,6 +65,7 @@ class DeckDetail(generics.RetrieveUpdateDestroyAPIView):
         instance = self.get_object()
         if request.user.id == instance.owner.id:
             self.perform_destroy(instance)
+        return Response()
 
 class UserDeckList(generics.ListCreateAPIView):
     queryset = Deck.objects.all()
@@ -114,6 +115,7 @@ class CardsDetail(generics.RetrieveUpdateDestroyAPIView):
         instance = self.get_object()
         if request.user.id == instance.owner.id:
             self.perform_destroy(instance)
+        return Response()
 
 class UserList(generics.ListCreateAPIView):
 
