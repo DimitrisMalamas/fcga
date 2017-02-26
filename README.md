@@ -2,8 +2,8 @@
 A web application that allows users to play and/or craete a flash cards game.
 
 This application allows you to:
-1. Register
-2. LogIn/LogOut
+- 1. Register
+- 2. LogIn/LogOut
 3. Choose the category of the Decks that you want to be shown on the Dashboard
 4. Pick a Deck to see its information 
 5. Start playing with the Deck
