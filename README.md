@@ -2,7 +2,7 @@
 A web application that allows users to play and/or craete a flash cards game.
 
 This application allows you to:
--  1. Register
+-   Register
 2. LogIn/LogOut
 3. Choose the category of the Decks that you want to be shown on the Dashboard
 4. Pick a Deck to see its information 
@@ -11,7 +11,7 @@ This application allows you to:
 7. "Star" a card that you find interesting during the game so that you can come back later or when you finish the game
 
 If you are logged in, you can also:
-1. Create a new Deck
+-  Create a new Deck
 2. See all the decks that you own
 3. Delete a Deck that you own
 4. Create cards for any Deck that you own
