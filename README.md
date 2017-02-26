@@ -1,5 +1,6 @@
 # flash-cards-game
 A web application that allows users to play and/or craete a flash cards game.
+
 This application allows you to:
 1. Register
 2. LogIn/LogOut
