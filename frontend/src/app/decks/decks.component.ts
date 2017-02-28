@@ -14,7 +14,7 @@ import { AuthService } from '../auth.service';
 export class DecksComponent implements OnInit{
   decks : Deck[];
   selectedDeck: Deck;
-
+  loggedin: boolean;
   constructor(private router: Router,
               private deckService: DeckService,
               private authService: AuthService) { }
@@ -24,7 +24,11 @@ export class DecksComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getDecks();
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser != null && currentUser.token != null) {
+      this.loggedin = true;
+      this.getDecks();
+    }
   }
 
   onSelect(deck: Deck): void {

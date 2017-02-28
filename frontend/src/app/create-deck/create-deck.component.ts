@@ -16,7 +16,7 @@ export class CreateDeckComponent implements OnInit {
   decks : Deck[];
 
   category : string;
-
+  loggedin: boolean;
   constructor(private router: Router,
               private deckService: DeckService,
               private authService: AuthService) { }
@@ -25,6 +25,10 @@ export class CreateDeckComponent implements OnInit {
   selectedCategory : string;
   ngOnInit() {
     this.category = this.categories[0];
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser != null && currentUser.token != null) {
+      this.loggedin = true;
+    }
   }
   onSelect(category: string): void {
     this.selectedCategory = category;

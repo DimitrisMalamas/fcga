@@ -16,7 +16,7 @@
 <div class="container">
     <h1>LOGIN</h1>
     <p>{{message}}</p>
-    <span [ngSwitch]="authService.isLoggedIn">
+    <span [ngSwitch]="loggedin">
       <span *ngSwitchCase="false">
     <form>
       <div class="form-group">

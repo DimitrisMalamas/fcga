@@ -25,6 +25,7 @@ export class DeckService {
   }
 
   getUserDecks(): Promise<Deck[]> {
+
     let postHeaders = new Headers(this.headers);
     postHeaders.append('Authorization', `JWT ${this.authService.token}`);
     return this.http.get(this.decksUrl2, {headers: postHeaders})

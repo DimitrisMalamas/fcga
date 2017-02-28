@@ -13,7 +13,10 @@ export class AuthService {
 
   token: string = null;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.token = currentUser && currentUser.token;
+  }
 
   login(username, password): Promise<boolean> {
     const authUrl = `api-token-auth/`;
@@ -26,6 +29,7 @@ export class AuthService {
         .then(res => { let results = res.json();
                        if (results['token']) {
                          this.token = results['token'];
+                         localStorage.setItem('currentUser', JSON.stringify({ username: username, token: this.token }));
                          this.isLoggedIn = true;
                          return true;
                        } else {
@@ -40,6 +44,7 @@ export class AuthService {
   logout(): void {
     this.isLoggedIn = false;
     this.token = null;
+    localStorage.removeItem('currentUser');
   }
 
   private handleError(error: any): Promise<any> {

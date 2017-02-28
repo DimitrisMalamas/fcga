@@ -15,7 +15,7 @@ export class CardsDetailDeleteComponent implements OnInit {
   deckId: number;
   cards: Card[];
   selectedCard: Card;
-
+  loggedin: boolean;
   constructor(private cardService: CardService,
               private route: ActivatedRoute,
               private location: Location,
@@ -31,7 +31,11 @@ export class CardsDetailDeleteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCards();
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser != null && currentUser.token != null) {
+      this.loggedin = true;
+      this.getCards();
+    }
   }
 
   goBack(): void {

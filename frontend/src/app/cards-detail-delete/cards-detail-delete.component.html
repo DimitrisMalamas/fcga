@@ -1,7 +1,7 @@
-<div *ngIf="authService.isLoggedIn == false">
+<div *ngIf="loggedin != true">
   <app-login></app-login>
 </div>
-<div *ngIf="authService.isLoggedIn">
+<div *ngIf="loggedin == true">
 <ul class="decks">
   <li *ngFor="let card of cards"
       [class.selected]="card === selectedCard"

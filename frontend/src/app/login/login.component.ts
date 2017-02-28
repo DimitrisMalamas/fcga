@@ -10,26 +10,35 @@ import { AppComponent } from '../app.component';
 export class LoginComponent {
 
   message: string;
-
+  loggedin: boolean;
   constructor(public authService: AuthService, public router: Router, public appComponent: AppComponent) {
     this.setMessage();
   }
 
+  ngOnInit(): void {
+    this.loggedin = false;
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser != null && currentUser.token != null) {
+      this.loggedin = true;
+    }
+  }
+
   setMessage() {
-    this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
+    this.message = 'Logged ' + (this.loggedin ? 'out' : 'in');
   }
 
   login(username, password) {
     this.message = 'Trying to log in ...';
+
     this.authService.login(username, password)
+
       .then(() => {
         this.setMessage();
-        if (this.authService.isLoggedIn) {
-          this.appComponent.tabs[0].active = true;
-          let loginIndex = this.appComponent.tabs.length - 3;
-          this.appComponent.tabs[loginIndex].title = 'Logout';
-          this.router.navigate(['/']);
-        }
+        this.appComponent.tabs[0].active = true;
+        let loginIndex = this.appComponent.tabs.length - 3;
+        this.appComponent.tabs[loginIndex].title = 'Logout';
+        this.router.navigate(['/']);
+
       })
       .catch(error => this.message = error);
   }
@@ -39,5 +48,6 @@ export class LoginComponent {
     let loginIndex = this.appComponent.tabs.length - 3;
     this.appComponent.tabs[loginIndex].title = 'Login';
     this.setMessage();
+    this.loggedin = false;
   }
 }

@@ -22,11 +22,11 @@
     Add
   </button>
 </div> -->
-<div *ngIf="authService.isLoggedIn == false">
+<div *ngIf="loggedin != true">
   <app-login></app-login>
 </div>
 
-<div class="new-deck" *ngIf="authService.isLoggedIn">
+<div class="new-deck" *ngIf="loggedin == true">
 <div class="container">
 <h3>Create a deck</h3>
     <form>
