@@ -18,9 +18,9 @@ If you are logged in, you can also:
 5. See a list of all the cards of a deck that you own
 6. Delete a card of a deck that you own 
 
-Installation
+# Installation
 
-BEFORE YOU INSTALL:
+# BEFORE YOU INSTALL:
 
 Make sure that you have installed a node version 7.x or higher.
 Also make sure that you have installed the latest version of angular cli.
@@ -30,7 +30,7 @@ Once you have cloned the app move to the frontend director:
 npm install ng2-bootstrap bootstrap –save
 
 
-# Ancli
+# Fronend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
 
