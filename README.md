@@ -19,6 +19,7 @@ If you are logged in, you can also:
 6. Delete a card of a deck that you own 
 
 Installation
+
 BEFORE YOU INSTALL:
 
 Make sure that you have installed a node version 7.x or higher.
