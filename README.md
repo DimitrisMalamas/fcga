@@ -28,19 +28,19 @@ Also make sure that you have installed the latest version of angular cli.
 
 Once you have cloned the app move to the frontend director:
 
-npm install ng2-bootstrap bootstrap –save
+`npm install ng2-bootstrap bootstrap –save`
 
 For the backend:
 
 Make sure that you have installed python 3.
 Install Django:
-pip3 install Django
+`pip3 install Django`
 
 Install django REST framework:
-pip3 install djangorestframework
+`pip3 install djangorestframework`
 
 Install Django Rest framework JWT Auth:
-pip3 install djangorestframework-jwt
+`pip3 install djangorestframework-jwt`
 
 # Backend
 
