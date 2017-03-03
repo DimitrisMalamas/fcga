@@ -21,6 +21,7 @@ If you are logged in, you can also:
 # Installation
 
 # BEFORE YOU INSTALL:
+For the frontend:
 
 Make sure that you have installed a node version 7.x.
 Also make sure that you have installed the latest version of angular cli.
@@ -29,10 +30,47 @@ Once you have cloned the app move to the frontend director:
 
 npm install ng2-bootstrap bootstrap –save
 
+For the backend:
+
+Make sure that you have installed python 3.
+Install Django:
+pip3 install Django
+
+Install django REST framework:
+pip3 install djangorestframework
+
+Install Django Rest framework JWT Auth:
+pip3 install djangorestframework-jwt
+
+# Backend
+
+The backend of the project was generated with django and django REST framework.
+Since you have cloned the project navigate to the backend dir.
+cd fcga
+cd backend
+Navigate to the flip_cards_game dir and make the appropriate changes to the site_config.py file.
+
+The uploaded example uses mySQL. For the creation of the database create a query and execute the above lines of code with the appropriate changes:
+
+CREATE DATABASE flipcard CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE USER 'flip_user'@'localhost' IDENTIFIED BY 'g8nzmktk6y';
+
+GRANT ALL PRIVILEGES ON flipcard.* TO 'flip_user'@'localhost';
+
+Then, navigate to the fcga/backend director and use the migrate command:
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+
+Navigate to the fcga/backend/flipcards director and create a folder named "static". 
 
 # Fronend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
+
+Navigate to the fcga/frontend director:
+npm istall
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -53,3 +91,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Once you have built the project copy all the files of the “dist” director and paste them in the static folder of the backend.
 
+
+# Run the project
+Navigate to the fcga/backend director and run:
+python3 manage.py runserver
