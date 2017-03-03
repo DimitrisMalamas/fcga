@@ -95,3 +95,7 @@ Once you have built the project copy all the files of the “dist” director an
 # Run the project
 Navigate to the fcga/backend director and run:
 `python3 manage.py runserver`
+
+To play you need to sign up, log in and create a deck. Once you have created the deck you will be navigated automatically to the "my decks" section of the application. 
+
+Chose the deck that you have created and then a section will appear where you can add cards. Navigate to the "view details section" where you will find iformation about the deck. You can start playing. 
