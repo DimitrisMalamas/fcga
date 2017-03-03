@@ -23,7 +23,7 @@ If you are logged in, you can also:
 # BEFORE YOU INSTALL:
 For the frontend:
 
-Make sure that you have installed a node version 7.x.
+Make sure that you have installed a node version 6.x or higher.
 Also make sure that you have installed the latest version of angular cli.
 
 Once you have cloned the app move to the frontend director:
